@@ -1,0 +1,152 @@
+/* ============================================================
+   FlaskVault — Custom Styles
+   Complements Bootstrap 5 (dark mode) with glassmorphism,
+   accent colour, and micro-animations.
+   ============================================================ */
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+    --accent: #6c63ff;
+    --accent-hover: #5a52e0;
+    --accent-subtle: rgba(108, 99, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --surface: #14141f;
+    --body-bg: #0c0c14;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--body-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Accent helpers ────────────────────────────────────────── */
+.text-accent { color: var(--accent) !important; }
+.bg-accent-subtle { background: var(--accent-subtle); border-radius: 12px; padding: 12px; }
+
+.btn-accent {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-accent:hover, .btn-accent:focus {
+    background: var(--accent-hover);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── Glassmorphism card ────────────────────────────────────── */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.glass-card:hover {
+    border-color: rgba(108, 99, 255, 0.25);
+    box-shadow: 0 0 24px rgba(108, 99, 255, 0.08);
+}
+
+/* ── Glass navbar ──────────────────────────────────────────── */
+.glass-nav {
+    background: rgba(12, 12, 20, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* ── Hero section ──────────────────────────────────────────── */
+.hero-section {
+    min-height: 72vh;
+    padding: 4rem 0 2rem;
+}
+.hero-graphic {
+    width: 220px;
+    height: 220px;
+    background: var(--accent-subtle);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 4s ease-in-out infinite;
+}
+.hero-graphic i {
+    font-size: 5rem;
+    color: var(--accent);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* ── Stat icon circle ──────────────────────────────────────── */
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ── Table ─────────────────────────────────────────────────── */
+.table-dark {
+    --bs-table-bg: transparent;
+}
+.table-dark thead tr {
+    border-bottom: 1px solid var(--glass-border);
+}
+.table-dark td, .table-dark th {
+    border-bottom: 1px solid var(--glass-border);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* ── Slide-up entrance animation ───────────────────────────── */
+.animate-in {
+    animation: slideUp 0.5s ease-out both;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Alert tweaks ──────────────────────────────────────────── */
+.alert {
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+/* ── Form controls in dark mode ────────────────────────────── */
+.form-control, .input-group-text {
+    border-radius: 10px;
+}
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem var(--accent-subtle);
+}
+
+/* ── Modal tweaks ──────────────────────────────────────────── */
+.modal-content.glass-card {
+    background: var(--surface);
+}
+
+/* ── Scrollbar (webkit) ────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--body-bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-subtle); border-radius: 3px; }
+
+/* ── Responsive polish ─────────────────────────────────────── */
+@media (max-width: 576px) {
+    .hero-section { min-height: auto; padding: 3rem 0; }
+    .hero-graphic { width: 140px; height: 140px; }
+    .hero-graphic i { font-size: 3rem; }
+}
